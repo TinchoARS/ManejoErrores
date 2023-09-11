@@ -149,3 +149,16 @@ class Film:
         query = "DELETE FROM sakila.film WHERE film_id = %s"
         params = film.film_id,
         DatabaseConnection.execute_query(query, params=params)
+        
+    @classmethod
+    def exists(cls, film_id):
+        """Check if a film exists
+        Args:
+            - film_id (int): ID of the film to check
+        Returns:
+            bool: True if the film exists, False otherwise
+        """
+        query = "SELECT COUNT(*) FROM sakila.film WHERE film_id = %s"
+        params = film_id,
+        result = DatabaseConnection.execute_query(query, params=params)
+        return result[0][0] == 1

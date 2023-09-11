@@ -8,10 +8,11 @@ class DatabaseConnection:
     def get_connection(cls):
         if cls._connection is None:
             cls._connection = mysql.connector.connect(
-                host = cls._config['DATABASE_HOST'],
-                user = cls._config['DATABASE_USERNAME'],
-                port = cls._config['DATABASE_PORT'],
-                password = cls._config['DATABASE_PASSWORD']
+                host = cls._config['127.0.0.1'],
+                user = cls._config['root'],
+                port = cls._config['3306'],
+                password = cls._config['martin'],
+                database =['sakila']
             )
         
         return cls._connection
